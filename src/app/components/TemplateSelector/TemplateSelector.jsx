@@ -3,7 +3,7 @@ import React from "react";
 import { translations } from "../../utils/translations";
 
 const templates = [
-  { id: 'classic', previewColor: 'bg-gray-200' },
+  { id: 'classic', previewColor: 'bg-purple-200' },
   { id: 'modern', previewColor: 'bg-blue-200' },
   { id: 'minimal', previewColor: 'bg-green-100' },
 
