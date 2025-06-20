@@ -43,7 +43,13 @@ export default function HomePage() {
   const letterTypes = {
     motivation: { label: "Lettre de motivation", icon: "🟦", subject: "Candidature au poste de...", body: "Je me permets de vous adresser ma candidature..." },
     candidature: { label: "Candidature spontanée", icon: "🟧", subject: "Candidature spontanée", body: "Je vous adresse ma candidature spontanée..." },
-    stage: { label: "Demande de stage", icon: "🟨", subject: "Demande de stage - [période]", body: "Actuellement étudiant(e), je recherche un stage..." },
+    stage: {
+      label: "Demande de stage",
+      icon: "🟨",
+      subject: "",
+      body:
+        `Nom Prénom\nAdresse\nTéléphone\nE-mail\n\\nEntreprise\nService / Responsable\nAdresse de l'entreprise\n\nObjet : Demande de stage en développement web\n\nMadame, Monsieur,\n\nJe suis [Nom], étudiant(e) en développement web à [Établissement]. Je me permets de vous adresser ma candidature pour un stage de [durée] au sein de votre entreprise.\n\nAu cours de ma formation, j’ai acquis des compétences en HTML, CSS, JavaScript, React, Node.js, etc. Je suis motivé(e), curieux(se), et je saurai m’adapter à votre environnement de travail.\n\nVotre entreprise m’intéresse particulièrement pour [raison spécifique liée à l'entreprise].\n\nJe reste à votre disposition pour un entretien. Dans l’attente de votre réponse, je vous prie d’agréer, Madame, Monsieur, l’expression de mes salutations distinguées.\n\n[Signature]`
+    },
     ecole: { label: "Candidature à une école", icon: "🟪", subject: "Demande d’admission à [nom de l’école]", body: "Je souhaite intégrer votre établissement..." },
     demission: { label: "Lettre de démission", icon: "🟥", subject: "Démission du poste de...", body: "Par la présente, je vous informe de ma décision..." },
     reclamation: { label: "Lettre de réclamation", icon: "⬛", subject: "Réclamation - [objet]", body: "Je me permets de vous adresser cette lettre de réclamation..." },
@@ -55,7 +61,8 @@ export default function HomePage() {
     chronologique: "CV Chronologique",
     fonctionnel: "CV Fonctionnel",
     mixte: "CV Mixte",
-    moderne: "CV Moderne",
+
+
     etudiant: "CV Étudiant",
     international: "CV International"
   };
@@ -97,20 +104,15 @@ export default function HomePage() {
   };
 
   return (
-    <motion.div
-      className="p-4 bg-gradient-to-br from-slate-100 via-white to-slate-200 min-h-screen"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.6 }}
-    >
+    <motion.div className="p-4 bg-gradient-to-br from-slate-100 via-white to-slate-200 min-h-screen">
       <div className="flex flex-col items-center mb-8">
         <div className="flex items-center gap-3">
           {/* Logo plume stylisée en L */}
           <span className="inline-block">
             <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 40C18 32 28 16 28 8" stroke="#2563eb" strokeWidth="3.5" strokeLinecap="round"/>
-              <path d="M12 40C18 38 28 32 36 24" stroke="#60a5fa" strokeWidth="2.5" strokeLinecap="round"/>
-              <circle cx="13" cy="39" r="2.5" fill="#2563eb"/>
+              <path d="M12 40C18 32 28 16 28 8" stroke="#2563eb" strokeWidth="3.5" strokeLinecap="round" />
+              <path d="M12 40C18 38 28 32 36 24" stroke="#60a5fa" strokeWidth="2.5" strokeLinecap="round" />
+              <circle cx="13" cy="39" r="2.5" fill="#2563eb" />
             </svg>
           </span>
           <span>
@@ -120,13 +122,12 @@ export default function HomePage() {
         <span className="mt-2 text-lg md:text-xl text-blue-900 font-medium tracking-wide text-center">
           Écris. Personnalise. Télécharge. Brille.
         </span>
-        <div className="flex gap-2 items-center mt-3">
-          <button
-            onClick={() => setShowHelp(!showHelp)}
-            className="text-sm bg-yellow-100 px-2 py-1 rounded border border-yellow-400"
-          >
-            ℹ️ Aide
-          </button>
+      </div>
+
+      <div className="flex justify-between items-center mb-6">
+        {/* <h1 className="text-4xl font-bold text-blue-700">📝 {t.appTitle}</h1> */}
+        <div className="flex gap-2 items-center">
+
           <button
             onClick={() => setLang(lang === 'fr' ? 'en' : 'fr')}
             className="text-sm bg-gray-200 px-4 py-1 rounded hover:bg-gray-300 transition-colors"
@@ -139,21 +140,19 @@ export default function HomePage() {
       <div className="flex justify-center gap-4 mb-4">
         <button
           onClick={() => setMode("cv")}
-          className={`px-6 py-2 rounded-full shadow-md transition-all duration-200 ${
-            mode === "cv"
+          className={`px-6 py-2 rounded-full shadow-md transition-all duration-200 ${mode === "cv"
               ? "bg-blue-600 text-white transform scale-105"
               : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-          }`}
+            }`}
         >
           {t.cvMode}
         </button>
         <button
           onClick={() => setMode("letter")}
-          className={`px-6 py-2 rounded-full shadow-md transition-all duration-200 ${
-            mode === "letter"
+          className={`px-6 py-2 rounded-full shadow-md transition-all duration-200 ${mode === "letter"
               ? "bg-blue-600 text-white transform scale-105"
               : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-          }`}
+            }`}
         >
           {t.letterMode}
         </button>
